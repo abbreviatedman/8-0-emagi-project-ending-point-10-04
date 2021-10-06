@@ -1,19 +1,15 @@
-// This should connect the encoded words
-
-const encode = (word, emojis) => {
-  let result = []
-  for(word of words){
-    const finder = emojis.find(
-      (emoji) => emoji.letter === word.toLowerCase()
-    );
-    if (finder){
+const encode = (words, emojis) => {
+  let result = [];
+  for (word of words) {
+    const finder = emojis.find((emoji) => emoji.letter === word.toLowerCase());
+    if (finder) {
       result.push(finder.symbol);
-    } else{
-      result.push(word)
+    } else {
+      result.push(word);
     }
   }
-  return result.join('')
-}
+  return result.join("");
+};
 
 // DON'T TOUCH BELOW!
 // If you haven't made the function yet, this check makes sure other tests can still run.

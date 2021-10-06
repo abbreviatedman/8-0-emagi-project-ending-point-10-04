@@ -2,10 +2,10 @@
 
 :root {
   --color-dark: #191716;
-  --color-light: #e0e2db;
+  --color-light: #f5f7f2;
   --color-red: #f72c25;
-  --color-green: #5b9279;
-  --color-yellow: #e6af2e;
+  --color-green: #c2e0d3;
+  --color-purple: #932ee6;
 }
 
 html,
@@ -28,7 +28,7 @@ h6 {
 
 /* Header */
 header {
-  background: var(--color-yellow);
+  background: var(--color-purple);
   border-bottom: 5px solid var(--color-dark);
   margin-bottom: 50px;
 }
@@ -132,7 +132,7 @@ footer p {
 
 footer a,
 footer a:hover {
-  color: var(--color-yellow);
+  color: var(--color-purple);
 }
 
 /* Media queries */
