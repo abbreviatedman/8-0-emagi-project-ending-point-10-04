@@ -1,5 +1,16 @@
 // You encode function should go here.
+const encode = (sentence, emojis) => {
+  sentence = sentence.split('')
+  return sentence.map(char => {
+    
+    if(/[\W\d]/.test(char)){
+      return char
+    }
+    return emojis.find(emoji => emoji.letter === char.toLowerCase()).symbol
+  }).join('')
 
+
+}
 // DON'T TOUCH BELOW!
 // If you haven't made the function yet, this check makes sure other tests can still run.
 if (typeof encode === "undefined") {

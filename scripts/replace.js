@@ -1,5 +1,23 @@
 // Your replace function should go here.
+const replace = (sentence, emojis) => {
+  return sentence.split(/\s/).map(term => {
+    const emoji = newSearch(term, emojis)
+    if(emoji.length === 0){
+      return term
+    }
+    return emoji[0].symbol
+   }).join(' ')
+}
+const newSearch = (term, emojis) => {
+  return emojis.filter((emoji) => emoji.name === term.toLowerCase())
+}
 
+// console.log(replace('term', [{
+//   symbol: "👽",
+//   letter: "a",
+//   name: "alien",
+//   category: "faces",
+// },]))
 // DON'T TOUCH BELOW!
 // If you haven't made the function yet, this check makes sure other tests can still run.
 if (typeof replace === "undefined") {
