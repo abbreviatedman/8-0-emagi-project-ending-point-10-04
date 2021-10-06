@@ -133,7 +133,7 @@ For example, if you searched "heart" it should display the following:
 
 #### Feature list
 
-- [ ] Complete the main search functionality so that text inserted into the text field is translated to one or more emoji. The result should be displayed in the paragraph inside of the `.result` element.
+- [] Complete the main search functionality so that text inserted into the text field is translated to one or more emoji. The result should be displayed in the paragraph inside of the `.result` element.
 
 - [ ] After submitting, if the search was successful, clear out the text field.
 
@@ -151,9 +151,9 @@ Then, when a category is selected, a random emoji should be chosen from that cat
 
 #### Feature list
 
-- [ ] On page load, additional categories should be added to the `select` element.
+- [x] On page load, additional categories should be added to the `select` element.
 
-- [ ] On page load, each category should be properly capitalized. (e.g. "Entertainment" instead of "entertainment".)
+- [X] On page load, each category should be properly capitalized. (e.g. "Entertainment" instead of "entertainment".)
 
 - [ ] Complete the main randomization functionality so that after clicking the submitting button, a random emoji from that category is shown. The result should be displayed in the paragraph inside of the `.result` element.
 
