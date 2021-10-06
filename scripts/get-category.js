@@ -1,5 +1,14 @@
 // Your `getCategory` function should go here.
 
+const getCategory = (category, emojis) => {
+  const emojiArr = [];
+  for (const emoji of emojis) {
+    if (emoji.category === category) {
+      emojiArr.push(emoji);
+    }
+  }
+  return emojiArr;
+};
 // DON'T TOUCH BELOW!
 // If you haven't made the function yet, this check makes sure other tests can still run.
 if (typeof getCategory === "undefined") {
