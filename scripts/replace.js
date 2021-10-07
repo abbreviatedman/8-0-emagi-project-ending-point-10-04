@@ -1,5 +1,10 @@
 // Your replace function should go here.
-
+const replace = (userInput, arrayOfEmojis) => {
+  const matchingEmoji = arrayOfEmojis.find(
+    (emoji) => userInput.toLowerCase() === emoji.name
+  );
+  return matchingEmoji ? matchingEmoji.symbol : userInput;
+};
 // DON'T TOUCH BELOW!
 // If you haven't made the function yet, this check makes sure other tests can still run.
 if (typeof replace === "undefined") {

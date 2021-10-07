@@ -1,4 +1,17 @@
 // Your `getCategory` function should go here.
+//function getNames(){}
+
+const getCategory = (categorySelected, arrayOfEmojis) => {
+  return arrayOfEmojis.filter((emoji) => categorySelected === emoji.category);
+};
+
+// const arrayOfEmojis = [];
+// for (i = 0; i < emojis.length; i++) {
+//   if (emojis[i].category === categorySelected) {
+//     arrayOfEmojis.push(emojis[i]);
+//   }
+// }
+// return arrayOfEmojis;
 
 // DON'T TOUCH BELOW!
 // If you haven't made the function yet, this check makes sure other tests can still run.
