@@ -25,20 +25,33 @@ document.querySelector("#random form").addEventListener("submit", (event) => {
 
 document.querySelector("#encode form").addEventListener("submit", (event) => {
   event.preventDefault();
-  const category = event.target.encode.value;
+  const term = event.target.encode.value;
   fetch(`https://emagi-server-8-0.herokuapp.com/emojis`)
     .then((response) => response.json())
     .then((emojis) => {
-      console.log(emojis);
+      if (!term.length) {
+        const resultArea = document.querySelector("#encode aside p");
+        resultArea.textContent = "Please enter a value to replace.";
+        document.querySelector("#encode aside").classList.add("error");
+      } else {
+        const result = encode(term, emojis);
+        const resultArea = document.querySelector("#encode aside p");
+        resultArea.textContent = result;
+        document.querySelector("#encode aside").classList.remove("error");
+        document.querySelector("#encode aside").classList.add("success");
+        event.target.reset();
+      }
     });
-});
 
-document.querySelector("#replace form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const category = event.target.replace.value;
-  fetch(`https://emagi-server-8-0.herokuapp.com/emojis`)
-    .then((response) => response.json())
-    .then((emojis) => {
-      console.log(emojis);
+  document
+    .querySelector("#replace form")
+    .addEventListener("submit", (event) => {
+      event.preventDefault();
+      const category = event.target.replace.value;
+      fetch(`https://emagi-server-8-0.herokuapp.com/emojis`)
+        .then((response) => response.json())
+        .then((emojis) => {
+          console.log(emojis);
+        });
     });
 });
