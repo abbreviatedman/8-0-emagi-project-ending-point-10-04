@@ -1,4 +1,15 @@
 // Your replace function should go here.
+// if the user term is included in the list of emojis then I want to replace the matched word
+const replace = ((term, emojis) => {
+  for (const eachEmoji of emojis) {
+    if (eachEmoji.name === term.toLowerCase()) {
+      return eachEmoji.symbol
+    }
+  }
+  return term
+})
+
+
 
 // DON'T TOUCH BELOW!
 // If you haven't made the function yet, this check makes sure other tests can still run.
