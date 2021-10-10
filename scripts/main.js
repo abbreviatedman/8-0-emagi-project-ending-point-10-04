@@ -69,7 +69,6 @@ document.querySelector('#replace form')
     fetch("https://emagi-server-8-0.herokuapp.com/emojis")
       .then((response) => response.json())
       .then((emojis) => {
-        console.log(emojis)
         if (userInput.length === 0) {
           throw "Error"
         }
@@ -94,5 +93,29 @@ document.querySelector('#replace form')
       })
   })
 
-  //if these series of characters exist in a word then I want to replace them with an emoji
-  // use find to determine if the emoji exists in the arrayedUser Input. If there is no emoji symbol throw and error
+//if these series of characters exist in a word then I want to replace them with an emoji
+// use find to determine if the emoji exists in the arrayedUser Input. If there is no emoji symbol throw and error
+
+//random function
+document.querySelector('#encode form')
+  .addEventListener('submit', (event) => {
+    event.preventDefault()
+    const userInput = event.target.encode.value
+    console.log(userInput)
+    fetch("https://emagi-server-8-0.herokuapp.com/emojis")
+      .then((response) => response.json())
+      .then((emojis) => {
+        const resultArea = document.querySelector('#encode aside p')
+        resultArea.textContent = encode(userInput, emojis)
+        document.querySelector('#encode aside').classList.add('success')
+        document.querySelector('#encode aside').classList.remove('error')
+        event.target.reset()
+      })
+      .catch(() => {
+        const resultArea = document.querySelector('#encode aside p')
+        resultArea.textContent = `There was an error.`
+        document.querySelector('#encode aside').classList.add('error')
+        document.querySelector('#encode aside').classList.remove('success')
+      })
+
+  })
