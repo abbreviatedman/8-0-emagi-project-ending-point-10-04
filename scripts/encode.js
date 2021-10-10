@@ -1,4 +1,20 @@
 // You encode function should go here.
+const encode = (term, emojis) => {
+  //for each letter replace it with the emoji that has the same first letter
+  const arr = [];
+  term.split("")
+  for (const letter of term) {
+    const find = emojis.find((emoji) => emoji.letter === letter.toLowerCase())
+    if (find) {
+      arr.push(find.symbol)
+    } else {
+      arr.push(letter)
+    }
+  }
+  return arr.join("")
+}
+
+// emojis.find(({letter}) => letter === )
 
 // DON'T TOUCH BELOW!
 // If you haven't made the function yet, this check makes sure other tests can still run.
