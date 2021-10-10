@@ -28,22 +28,35 @@ document.querySelector('#random form')
   .addEventListener('submit', (event) => {
     event.preventDefault()
     const category = event.target.randomDropdown.value
-    fetch(`https://emagi-server-8-0.herokuapp.com/categories/${category}`)
-      .then((response) => response.json())
-      .then((emojis) => {
-        const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-        console.log(randomEmoji);
-        const resultArea = document.querySelector('#random aside p')
-        resultArea.textContent = randomEmoji.symbol;
-        document.querySelector('#random aside').classList.add('success')
-        document.querySelector('#random aside').classList.remove('error')
-        event.target.reset()
-      })
-      .catch(() => {
-        const resultArea = document.querySelector('#random aside p')
-        resultArea.textContent = `There was an error.`
-        document.querySelector('#random aside').classList.add('error')
-      })
+    if (category.toLowerCase() === 'all') {
+      fetch('http://emagi-server-8-0.herokuapp.com/emojis')
+        .then((response) => response.json())
+        .then((emojis) => {
+          const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+          const resultArea = document.querySelector('#random aside p')
+          resultArea.textContent = randomEmoji.symbol;
+          document.querySelector('#random aside').classList.add('success')
+          document.querySelector('#random aside').classList.remove('error')
+          event.target.reset()
+        })
+    }
+    if (category.toLowerCase() !== 'all') {
+      fetch(`https://emagi-server-8-0.herokuapp.com/categories/${category}`)
+        .then((response) => response.json())
+        .then((emojis) => {
+          const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+          const resultArea = document.querySelector('#random aside p')
+          resultArea.textContent = randomEmoji.symbol;
+          document.querySelector('#random aside').classList.add('success')
+          document.querySelector('#random aside').classList.remove('error')
+          event.target.reset()
+        })
+        .catch(() => {
+          const resultArea = document.querySelector('#random aside p')
+          resultArea.textContent = `There was an error.`
+          document.querySelector('#random aside').classList.add('error')
+        })
+    }
   })
 
 //replace 
@@ -56,6 +69,7 @@ document.querySelector('#replace form')
     fetch("https://emagi-server-8-0.herokuapp.com/emojis")
       .then((response) => response.json())
       .then((emojis) => {
+        console.log(emojis)
         if (userInput.length === 0) {
           throw "Error"
         }
@@ -79,3 +93,6 @@ document.querySelector('#replace form')
         document.querySelector('#replace aside').classList.remove('success')
       })
   })
+
+  //if these series of characters exist in a word then I want to replace them with an emoji
+  // use find to determine if the emoji exists in the arrayedUser Input. If there is no emoji symbol throw and error
